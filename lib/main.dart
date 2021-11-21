@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import "recipe.dart";
+import "recipe_detail.dart";
 
 void main() {
   runApp(const RecipeApp());
@@ -46,8 +47,15 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SafeArea(
         child: ListView.builder(
           itemCount: Recipe.samples.length,
-          itemBuilder: (BuildContext context, int index) => buildRecipeCard(
-            Recipe.samples[index],
+          itemBuilder: (BuildContext context, int index) => GestureDetector(
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    RecipeDetail(recipe: Recipe.samples[index]),
+              ),
+            ),
+            child: buildRecipeCard(Recipe.samples[index]),
           ),
         ),
       ),
