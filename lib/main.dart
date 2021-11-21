@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import "recipe.dart";
@@ -54,11 +55,26 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget buildRecipeCard(Recipe recipe) => Card(
-        child: Column(
-          children: [
-            Image(image: AssetImage(recipe.imageUrl)),
-            Text(recipe.label),
-          ],
+        elevation: 2.5,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(7.0),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              Image(image: AssetImage(recipe.imageUrl)),
+              const SizedBox(height: 14.0),
+              Text(
+                recipe.label,
+                style: const TextStyle(
+                  fontSize: 17.0,
+                  fontWeight: FontWeight.w700,
+                  fontFamily: "Palatino",
+                ),
+              ),
+            ],
+          ),
         ),
       );
 }
